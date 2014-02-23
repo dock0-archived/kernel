@@ -9,7 +9,7 @@ A container for rolling new kernels. Based on [akerl/arch](https://github.com/do
 For best results, run this container with "/opt" as a volume on the host:
 
 ```
-docker run -t -i -v /opt/kernels:/opt akerl/kernel
+docker run -t -i -v /opt/kernels:/opt/output akerl/kernel
 ```
 
 ## License
