@@ -6,6 +6,12 @@ akerl/kernel
 
 A container for rolling new kernels. Based on [akerl/arch](https://github.com/dock0/arch), it uses [roller](https://github.com/akerl/roller) to build the kernels.
 
+For best results, run this container with "/opt" as a volume on the host:
+
+```
+docker run -t -i -v /opt/kernels:/opt akerl/kernel
+```
+
 ## License
 
 This repo is released under the MIT License. See the bundled LICENSE file for details.
