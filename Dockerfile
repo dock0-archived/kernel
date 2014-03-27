@@ -1,4 +1,4 @@
-FROM akerl/arch
+FROM dock0/arch
 MAINTAINER akerl <me@lesaker.org>
 RUN pacman -Syu --needed --noconfirm base-devel bc python-pip ruby
 RUN pip install roller==0.4.7
