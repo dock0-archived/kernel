@@ -7,4 +7,4 @@ cp -pR /opt/configs /opt/output/configs
 cp /boot/vmlinuz* /opt/output/
 cd /opt/output/configs
 NEW_CONFIG="$(git status -s | awk '/??/ {print $2}')"
-gist -R /opt/kernels/configs/$NEW_CONFIG
+gist -R /opt/output/configs/$NEW_CONFIG
