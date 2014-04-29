@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-[[ -z "$version" ]] && version="next"
+[[ -n "$version" ]] && version="-k$version"
 
-roller.py -v -n $version -b /opt/build -d /opt/configs || exit 1
+roller.py -v $version -n next -b /opt/build -d /opt/configs || exit 1
 mkdir -p /opt/output
 rm -rf /opt/output/configs
 cp -pR /opt/configs /opt/output/configs
