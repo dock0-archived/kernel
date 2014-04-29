@@ -12,6 +12,12 @@ For best results, run this container with "/opt" as a volume on the host:
 docker run -t -i -v /opt/kernels:/opt/output dock0/kernel
 ```
 
+To build a specific kernel, override the "version" variable:
+
+```
+docker run -e version=3.15-rc3 -t -i -v /opt/kernels:/opt/output dock0/kernel
+```
+
 ## License
 
 This repo is released under the MIT License. See the bundled LICENSE file for details.
