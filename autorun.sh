@@ -2,6 +2,7 @@
 
 [[ -n "$version" ]] && version="-k$version"
 
+git clone git://github.com/akerl/kernels /opt/configs
 roller.py -v $version -n next -b /opt/build -d /opt/configs || exit 1
 mkdir -p /opt/output
 rm -rf /opt/output/configs
