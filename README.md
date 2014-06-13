@@ -6,7 +6,7 @@ dock0/kernel
 
 A container for rolling new kernels. Based on [dock0/arch](https://github.com/dock0/arch), it uses [roller](https://github.com/akerl/roller) to build the kernels.
 
-For best results, run this container with "/opt" as a volume on the host:
+For best results, run this container with "/opt/kernels" as a volume:
 
 ```
 docker run -t -i -v /opt/kernels:/opt/output dock0/kernel
