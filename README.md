@@ -1,7 +1,7 @@
 dock0/kernel
 =======
 
-[![Trusted Build](http://img.shields.io/badge/trusted-build-green.svg)](https://index.docker.io/u/dock0/dev/)
+[![Trusted Build](http://img.shields.io/badge/trusted-build-green.svg)](https://registry.hub.docker.com/u/dock0/dev/)
 [![MIT Licensed](http://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 A container for rolling new kernels. Based on [dock0/arch](https://github.com/dock0/arch), it uses [roller](https://github.com/akerl/roller) to build the kernels.
