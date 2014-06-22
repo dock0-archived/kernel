@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 TMPDIR="$(mktemp -d)"
+KERNELDIR="$(pwd)"
 
 git clone git://git.code.sf.net/p/aufs/aufs3-standalone "$TMPDIR"
 pushd "$TMPDIR"
@@ -11,7 +12,6 @@ for patch in aufs3-kbuild.patch aufs3-base.patch aufs3-mmap.patch ; do
     patch -p1 < "$TMPDIR/$patch"
 done
 
-for data in Documentation fs include/uapi/linux/aufs_type.h ; do
-    cp -R "$TMPDIR/$data" ./$data
-done
+pushd "$TMPDIR"
+cp --parent -R Documentation fs include/uapi/linux/aufs_type.h $KERNELDIR/
 
