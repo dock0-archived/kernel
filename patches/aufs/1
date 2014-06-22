@@ -13,5 +13,5 @@ for patch in aufs3-kbuild.patch aufs3-base.patch aufs3-mmap.patch ; do
 done
 
 pushd "$TMPDIR"
-cp --parent -R Documentation fs include/uapi/linux/aufs_type.h $KERNELDIR/
+cp -v --parent -R Documentation fs include/uapi/linux/aufs_type.h $KERNELDIR/
 
