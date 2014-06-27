@@ -3,9 +3,9 @@
 TMPDIR="$(mktemp -d)"
 KERNELDIR="$(pwd)"
 
-git clone git://git.code.sf.net/p/aufs/aufs3-standalone "$TMPDIR"
+git clone git://git.code.sf.net/p/aufs/aufs3-standalone "$TMPDIR" 2>&1
 pushd "$TMPDIR"
-git checkout aufs3.x-rcN
+git checkout aufs3.x-rcN 2>&1
 popd
 
 for patch in aufs3-kbuild.patch aufs3-base.patch aufs3-mmap.patch ; do
