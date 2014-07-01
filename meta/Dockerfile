@@ -3,5 +3,5 @@ MAINTAINER akerl <me@lesaker.org>
 RUN pacman -Syu --needed --noconfirm base-devel bc python-pip ruby
 RUN pip install roller
 RUN gem install --no-user-install targit
-ADD autorun.sh /opt/autorun.sh
-CMD ["/opt/autorun.sh"]
+WORKDIR /opt/kernels
+CMD ["make", "build"]
