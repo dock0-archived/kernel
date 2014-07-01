@@ -1,5 +1,5 @@
 DIR = $(shell pwd)
-NEW_CONFIG = $(shell git status -s | grep '?? config/' | sed 's/.*//')
+NEW_CONFIG = $(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 
 .PHONY : default build_container manual container build push
 
