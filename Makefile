@@ -6,7 +6,7 @@ NEW_CONFIG=$(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 default: container
 
 build_container:
-	docker build -t kernels meta
+	docker build --no-cache -t kernels meta
 
 manual: build_container
 	./meta/launch /bin/bash || true
@@ -17,7 +17,7 @@ container: build_container
 build:
 	roller.py -v $(VERSION) -n next -b /opt/build -d configs -p $(DIR)/patches/next
 	mkdir -p build
-	mv /boot/vmlinuz* build/
+	mv /boot/vmlinuz* build/vmlinuz
 
 push:
 	ssh -oStrictHostKeyChecking=no git@github.com &>/dev/null || true
@@ -26,7 +26,7 @@ push:
 	git commit -m "$(NEW_CONFIG)"
 	git tag $(NEW_CONFIG)
 	git push --tags origin master
-	targit -a .github -c -f akerl/kernels $(NEW_CONFIG) build/vmlinuz-$(NEW_CONFIG)
+	targit -a .github -c -f akerl/kernels $(NEW_CONFIG) build/vmlinuz
 
 local: build push
 
