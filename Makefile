@@ -6,7 +6,7 @@ NEW_CONFIG=$(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 default: container
 
 build_container:
-	docker build --no-cache -t kernels meta
+	docker build -t kernels meta
 
 manual: build_container
 	./meta/launch /bin/bash || true
