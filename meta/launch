@@ -10,6 +10,6 @@ docker run \
     -e SSH_AUTH_SOCK=/auth.sock \
     -e VERSION=$VERSION \
     -v $(pwd):/opt/kernels \
-    -v ~/.gitconfig:/.gitconfig \
+    -v ~/.gitconfig:/root/.gitconfig \
     kernels $1
 
