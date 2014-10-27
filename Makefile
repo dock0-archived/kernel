@@ -21,6 +21,7 @@ build:
 
 push:
 	ssh -oStrictHostKeyChecking=no git@github.com &>/dev/null || true
+	mkdir -p patches/next
 	cp -R patches/next patches/$(NEW_CONFIG)
 	git add patches/$(NEW_CONFIG) configs/$(NEW_CONFIG)
 	git commit -m "$(NEW_CONFIG)"
