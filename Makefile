@@ -27,7 +27,7 @@ push:
 	git commit -m "$(NEW_CONFIG)"
 	git tag $(NEW_CONFIG)
 	git push --tags origin master
-	targit -a .github -c -f akerl/kernels $(NEW_CONFIG) build/vmlinuz
+	targit -a .github -c -f dock0/kernels $(NEW_CONFIG) build/vmlinuz
 
 local: build push
 
