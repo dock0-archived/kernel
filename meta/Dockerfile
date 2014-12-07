@@ -1,7 +1,4 @@
-FROM dock0/arch
+FROM dock0/build
 MAINTAINER akerl <me@lesaker.org>
-RUN pacman -S --needed --noconfirm base-devel bc python-pip ruby openssh
+RUN pacman -S --needed --noconfirm bc python-pip
 RUN pip install roller
-RUN gem install --no-user-install --no-rdoc --no-ri targit
-WORKDIR /opt/kernels
-CMD ["make", "local"]
