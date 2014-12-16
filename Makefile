@@ -6,7 +6,7 @@ NEW_CONFIG=$(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 default: container
 
 build_container:
-	docker build -t kernels meta
+	docker build -t kernel meta
 
 manual: build_container
 	./meta/launch /bin/bash || true
@@ -27,7 +27,7 @@ push:
 	git commit -m "$(NEW_CONFIG)"
 	git tag $(NEW_CONFIG)
 	git push --tags origin master
-	targit -a .github -c -f dock0/kernels $(NEW_CONFIG) build/vmlinuz
+	targit -a .github -c -f dock0/kernel $(NEW_CONFIG) build/vmlinuz
 
 local: build push
 

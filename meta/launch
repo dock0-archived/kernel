@@ -11,5 +11,5 @@ docker run \
     -e VERSION=$VERSION \
     -v $(pwd):/opt/build \
     -v ~/.gitconfig:/root/.gitconfig \
-    kernels $1
+    kernel $1
 
