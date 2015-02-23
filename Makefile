@@ -15,7 +15,7 @@ container: build_container
 	./meta/launch
 
 build:
-	roller.py -v $(VERSION) -n next -b /opt/build -d configs -p $(DIR)/patches/next
+	roller.py -v $(VERSION) -n next -b /opt/tmp -d configs -p $(DIR)/patches/next
 	mkdir -p build
 	mv /boot/vmlinuz* build/vmlinuz
 
