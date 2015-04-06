@@ -27,6 +27,7 @@ push:
 	git commit -m "$(NEW_CONFIG)"
 	git tag $(NEW_CONFIG)
 	git push --tags origin master
+	@sleep 3
 	targit -a .github -c -f dock0/kernel $(NEW_CONFIG) build/vmlinuz
 
 local: build push
