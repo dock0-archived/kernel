@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+TMPDIR="$(mktemp -d)"
+BUILDDIR="$(mktemp -d)"
+KERNELDIR="$(pwd)"
+
+git clone git://github.com/draios/sysdig "$TMPDIR" 2&>1
+(cd $BUILDDIR && cmake $TMPDIR && make driver)
