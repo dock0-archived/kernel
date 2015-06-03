@@ -1,4 +1,5 @@
 DIR = $(shell pwd)
+BUILD_DIR = /opt/tmp
 NEW_CONFIG=$(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 
 .PHONY : default build_container manual container build push local
@@ -15,9 +16,18 @@ container: build_container
 	./meta/launch
 
 build:
-	roller.py -v $(VERSION) -n next -b /opt/tmp -d configs -p $(DIR)/patches/next
-	mkdir -p build
-	mv /boot/vmlinuz* build/vmlinuz
+	$(eval kernel := \
+		$(shell roller.py \
+		-v $(VERSION) \
+		-n next \
+		-b $(BUILD_DIR) \
+		-d configs \
+		-p $(DIR)/patches/next \
+		-s \
+		))
+	echo $(kernel)
+	cp $(kernel) build/vmlinuz
+	cd $(shell dirname $(kernel))/../../../ && cp System.map build/System.map
 
 push:
 	ssh -oStrictHostKeyChecking=no git@github.com &>/dev/null || true
