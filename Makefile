@@ -1,5 +1,4 @@
 DIR = $(shell pwd)
-BUILD_DIR = /opt/tmp
 NEW_CONFIG=$(shell git status -s | grep '?? configs/' | sed 's|.*/||')
 
 .PHONY : default build_container manual container build push local
@@ -16,18 +15,16 @@ container: build_container
 	./meta/launch
 
 build:
-	$(eval kernel := \
-		$(shell roller.py \
-		-v $(VERSION) \
+	roller.py
+		-v \
+		$(VERSION) \
 		-n next \
-		-b $(BUILD_DIR) \
+		-b /opt/tmp \
 		-d configs \
 		-p $(DIR)/patches/next \
-		-s \
-		))
-	echo $(kernel)
-	cp $(kernel) build/vmlinuz
-	cd $(shell dirname $(kernel))/../../../ && cp System.map build/System.map
+		-s
+	cp /opt/tmp/sources/linux*/arch/x86/boot/bzImage build/vmlinuz
+	cp /opt/tmp/sources/linux*/System.map build/System.map
 
 push:
 	ssh -oStrictHostKeyChecking=no git@github.com &>/dev/null || true
@@ -39,6 +36,7 @@ push:
 	git push --tags origin master
 	@sleep 3
 	targit -a .github -c -f dock0/kernel $(NEW_CONFIG) build/vmlinuz
+	targit -a .github dock0/kernel $(NEW_CONFIG) build/System.map
 
 local: build push
 
