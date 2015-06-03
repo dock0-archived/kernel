@@ -15,7 +15,7 @@ container: build_container
 	./meta/launch
 
 build:
-	roller.py
+	roller.py \
 		-v \
 		$(VERSION) \
 		-n next \
