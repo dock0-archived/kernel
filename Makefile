@@ -23,6 +23,7 @@ build:
 		-d configs \
 		-p $(DIR)/patches/next \
 		-s
+        mkdir -p build
 	cp /opt/tmp/sources/linux*/arch/x86/boot/bzImage build/vmlinuz
 	cp /opt/tmp/sources/linux*/System.map build/System.map
 
