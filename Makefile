@@ -25,7 +25,6 @@ build:
 		-s
 	mkdir -p build
 	cp /opt/tmp/sources/linux*/arch/x86/boot/bzImage build/vmlinuz
-	cp /opt/tmp/sources/linux*/System.map build/System.map
 
 push:
 	ssh -oStrictHostKeyChecking=no git@github.com &>/dev/null || true
@@ -37,7 +36,6 @@ push:
 	git push --tags origin master
 	@sleep 3
 	targit -a .github -c -f dock0/kernel $(NEW_CONFIG) build/vmlinuz
-	targit -a .github dock0/kernel $(NEW_CONFIG) build/System.map
 
 local: build push
 
