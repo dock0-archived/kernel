@@ -1,0 +1,13 @@
+item do
+  expected do
+    url_xpath
+    url 'https://www.kernel.org/feeds/kdist.xml'
+    xpath '/html/body/rss/channel/item[1]/title'
+    regex /([\w.-]*): mainline/
+  end
+
+  actual do
+    git_tag
+    regex /^(.*)_\d+$/
+  end
+end
