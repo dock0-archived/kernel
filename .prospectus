@@ -8,6 +8,6 @@ item do
 
   actual do
     git_tag
-    regex /^(.*)_\d+$/
+    regex /^(.*)-\d+$/
   end
 end
