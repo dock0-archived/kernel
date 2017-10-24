@@ -1,0 +1,29 @@
+name 'kernel'
+org 'dock0'
+
+source(
+  type: 'git',
+  path: '.'
+)
+
+build do
+  run 'scripts/build.py'
+end
+
+package(
+  type: 'file',
+  artifacts: [
+    {
+      source: 'vmlinuz',
+      name: 'vmlinuz'
+    },
+    {
+      source: 'config',
+      name: 'config'
+    }
+  ]
+)
+
+test do
+  # TODO: add tests
+end
