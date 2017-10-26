@@ -13,7 +13,7 @@ build do
   match = new.first.match(regex)
   raise("Config change did not match regex: #{new}") unless match
   _, version, revision = match.to_a
-  run "roller.py -c #{version} -r #{revision} -b #{tmpdir(:kernel)} -d configs -s"
+  run "roller.py -v -k #{version} -c #{version} -r #{revision} -b #{tmpdir(:kernel)} -d configs -s"
 end
 
 package(
