@@ -22,6 +22,7 @@ def get_version(config):
             if 'Kernel Configuration' in line:
                 version = line.split(' ')[2]
                 break
+    version = version.replace('.0-rc', '-rc')
     return version
 
 
