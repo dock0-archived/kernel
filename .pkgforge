@@ -7,13 +7,7 @@ source(
 )
 
 build do
-  new = `git show --name-status --pretty=format: HEAD`.lines.grep(/configs\//)
-  raise('Last commit must match exactly 1 config file') unless new.size == 1
-  regex = /\w\tconfigs\/([\drc.-]+)_(\d+)/
-  match = new.first.match(regex)
-  raise("Config change did not match regex: #{new}") unless match
-  _, version, revision = match.to_a
-  run "roller.py -v -k #{version} -c #{version} -r #{revision} -b #{tmpdir(:kernel)} -d configs -s"
+  run "./dev/build.py -b #{tmpdir(:kernel)} #{config}"
 end
 
 package(

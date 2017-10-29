@@ -2,3 +2,4 @@ build/
 .github
 archives
 sources
+docker.conf
