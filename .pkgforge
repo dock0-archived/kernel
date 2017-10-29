@@ -15,8 +15,8 @@ build do
   CONFIGS.map do |c|
     kernel_version = `./dev/version.py configs/#{c}`
     run "./dev/build.py -b #{tmpdir(:kernel)} -r #{REVISION} configs/#{c}"
-    vmlinuz = File.join(tmpdir(:kernel), 'sources/linux-#{kernel_version}/arch/x86/boot/bzImage')
-    run `cp #{vmlinuz} #{releasedir}/vmlinuz_#{c}`
+    vmlinuz = File.join(tmpdir(:kernel), "sources/linux-#{kernel_version}/arch/x86/boot/bzImage")
+    run "cp #{vmlinuz} #{releasedir}/vmlinuz_#{c}"
     cp "configs/config_#{c}"
   end
 end
