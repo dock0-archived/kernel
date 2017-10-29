@@ -6,22 +6,30 @@ source(
   path: '.'
 )
 
+tag = ENV['CIRCLE_TAG']
+REVISION = tag ? tag.split('_').last : 'dev'
+
+CONFIGS = Dir.glob('configs/*').map { |x| x.split('/').last }
+
 build do
-  run "./dev/build.py -b #{tmpdir(:kernel)} #{config}"
+  CONFIGS.map do |c|
+    kernel_version = `./dev/version.py configs/#{c}`
+    kernel_version.sub!('.0-rc', '-rc')
+    run "./dev/build.py -b #{tmpdir(:kernel)} -r #{REVISION} configs/#{c}"
+    vmlinuz = File.join(tmpdir(:kernel), 'sources/linux-#{kernel_version}/arch/x86/boot/bzImage')
+    run `cp #{vmlinuz} #{releasedir}/vmlinuz_#{c}`
+    cp "configs/config_#{c}"
+  end
 end
 
 package(
   type: 'file',
-  artifacts: [
-    {
-      source: 'vmlinuz',
-      name: 'vmlinuz'
-    },
-    {
-      source: 'config',
-      name: 'config'
-    }
-  ]
+  artifacts: CONFIGS.flat_map do |c|
+    ['vmlinuz', 'config'].map do |prefix|
+      path = [prefix, c].join('_')
+      { source: path, name: path}
+    end
+  end
 )
 
 test do

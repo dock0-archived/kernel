@@ -4,10 +4,11 @@ import roller
 import argparse
 import os.path
 import sys
+import version
 
 def get_args(raw_args):
     parser = argparse.ArgumentParser(
-        description='Generate a new kernel config'
+        description='Build the kernel from the config'
     )
     parser.add_argument(
         'config_file',
@@ -19,25 +20,36 @@ def get_args(raw_args):
         default='/tmp',
         help='directory for downloading, extracting, and building the kernel'
     )
+    parser.add_argument(
+        '-r', '--revision',
+        dest='revision',
+        default='dev',
+        help='Set revision for new kernel'
+    )
     return parser.parse_args(raw_args)
 
 def easy_build(raw_args):
     args = get_args(raw_args)
 
     config_abs_file = os.path.abspath(args.config_file)
-    config_dir, config_full_version = os.path.split(config_abs_file)
-    config_version, config_revision = config_full_version.split('_')
-
+    config_dir, config_file = os.path.split(config_abs_file)
+    
     kernel = roller.Kernel(
         build_dir=args.build_dir,
         config_dir=config_dir,
         verbose=True
     )
 
-    kernel.version = config_version
-    kernel.revision = config_revision
-    kernel.config_version = config_version
-    kernel.config_revision = config_revision
+    with open('configs/linode') as handle:
+        for line in handle:
+            if 'Kernel Configuration' in line:
+                version = line.split(' ')[2]
+                break
+
+    kernel.version = version.get_version(config_abs_file)
+    kernel.revision = args.revision
+    kernel.config = config_file
+    kernel.output = 'none'
 
     kernel.download()
     kernel.extract()

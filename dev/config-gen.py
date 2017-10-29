@@ -4,6 +4,7 @@ import roller
 import argparse
 import os.path
 import sys
+import subprocess
 
 def get_args(raw_args):
     parser = argparse.ArgumentParser(
@@ -31,8 +32,7 @@ def easy_config(raw_args):
     args = get_args(raw_args)
 
     config_abs_file = os.path.abspath(args.config_file)
-    config_dir, config_full_version = os.path.split(config_abs_file)
-    config_version, config_revision = config_full_version.split('_')
+    config_dir, config_file = os.path.split(config_abs_file)
 
     kernel = roller.Kernel(
         build_dir=args.build_dir,
@@ -41,13 +41,9 @@ def easy_config(raw_args):
     )
 
     kernel.version = args.new_version
-    kernel.config_version = config_version
-    kernel.config_revision = config_revision
-    if args.new_version in kernel.existing_configs:
-        last = max(kernel.existing_configs[args.new_version])
-        kernel.revision = str(int(last) + 1)
-    else:
-        kernel.revision = '1'
+    kernel.config = config_file
+    kernel.output = config_file
+    kernel.revision = 'dev'
 
     kernel.download()
     kernel.extract()
