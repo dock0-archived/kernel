@@ -40,12 +40,6 @@ def easy_build(raw_args):
         verbose=True
     )
 
-    with open('configs/linode') as handle:
-        for line in handle:
-            if 'Kernel Configuration' in line:
-                version = line.split(' ')[2]
-                break
-
     kernel.version = version.get_version(config_abs_file)
     kernel.revision = args.revision
     kernel.config = config_file
