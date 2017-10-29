@@ -38,7 +38,7 @@ def easy_build(raw_args):
         verbose=True
     )
 
-    kernel.version = version.get_version(config_abs_file)
+    kernel.version = version.get_version(config_file)
     kernel.revision = args.revision
     kernel.config = config_file
     kernel.output = 'none'
