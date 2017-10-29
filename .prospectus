@@ -1,24 +1,16 @@
 Prospectus.extra_dep('file', 'prospectus_circleci')
 
 item do
-  noop
+  expected do
+    url_xpath
+    url 'https://www.kernel.org/feeds/kdist.xml'
+    xpath '/html/body/rss/channel/item[1]/title'
+    regex /([\w.-]*): mainline/
+  end
 
-  deps do
-    item do
-      name 'upstream'
-
-      expected do
-        url_xpath
-        url 'https://www.kernel.org/feeds/kdist.xml'
-        xpath '/html/body/rss/channel/item[1]/title'
-        regex /([\w.-]*): mainline/
-      end
-
-      actual do
-        git_tag
-        regex /^(.*)[-_]\d+$/
-      end
-    end
+  actual do
+    git_tag
+    regex /^(.*)[-_]\d+$/
   end
 
   extend ProspectusCircleci::Build.new('dock0/kernel')

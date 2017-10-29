@@ -7,7 +7,7 @@ source(
 )
 
 tag = ENV['CIRCLE_TAG']
-REVISION = tag ? tag.split('_').last : 'dev'
+REVISION = tag ? tag.split('-').last : 'dev'
 
 CONFIGS = Dir.glob('configs/*').map { |x| x.split('/').last }
 
