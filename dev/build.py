@@ -31,12 +31,10 @@ def get_args(raw_args):
 def easy_build(raw_args):
     args = get_args(raw_args)
 
-    config_abs_file = os.path.abspath(args.config_file)
-    config_dir, config_file = os.path.split(config_abs_file)
+    config_file = os.path.abspath(args.config_file)
     
     kernel = roller.Kernel(
         build_dir=args.build_dir,
-        config_dir=config_dir,
         verbose=True
     )
 
