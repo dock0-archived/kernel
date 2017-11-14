@@ -23,6 +23,8 @@ def get_version(config):
                 version = line.split(' ')[2]
                 break
     version = version.replace('.0-rc', '-rc')
+    if version.endswith('.0'):
+        version = version[0:-2]
     return version
 
 
