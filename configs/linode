@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.17.0-rc5 Kernel Configuration
+# Linux/x86 4.17.0-rc6 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -2811,7 +2811,6 @@ CONFIG_X86_PLATFORM_DEVICES=y
 # CONFIG_ACER_WIRELESS is not set
 # CONFIG_ACERHDF is not set
 # CONFIG_DELL_SMBIOS is not set
-# CONFIG_DELL_WMI is not set
 # CONFIG_DELL_WMI_AIO is not set
 # CONFIG_DELL_SMO8800 is not set
 # CONFIG_FUJITSU_TABLET is not set
