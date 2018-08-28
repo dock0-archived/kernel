@@ -1,4 +1,4 @@
-Prospectus.extra_dep('file', 'prospectus_circleci')
+Prospectus.extra_dep('file', 'prospectus_travis')
 
 item do
   expected do
@@ -13,5 +13,5 @@ item do
     regex /^(.*)[-_]\d+$/
   end
 
-  extend ProspectusCircleci::Build.new('dock0/kernel')
+  extend ProspectusTravis::Build.new('dock0/kernel')
 end
