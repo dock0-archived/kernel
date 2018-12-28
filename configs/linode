@@ -1,10 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.20.0-rc6 Kernel Configuration
+# Linux/x86 4.20.0 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 8.2.1 20180831
+# Compiler: gcc (GCC) 8.2.1 20181127
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=80201
@@ -3201,7 +3201,6 @@ CONFIG_MISC_FILESYSTEMS=y
 # CONFIG_BEFS_FS is not set
 # CONFIG_BFS_FS is not set
 # CONFIG_EFS_FS is not set
-# CONFIG_UBIFS_FS_AUTHENTICATION is not set
 # CONFIG_CRAMFS is not set
 # CONFIG_SQUASHFS is not set
 # CONFIG_VXFS_FS is not set
