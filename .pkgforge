@@ -11,7 +11,7 @@ REVISION = (tag && tag.start_with?('refs/tags/')) ? tag.split('-').last : 'dev'
 
 CONFIGS = Dir.glob('configs/*').map { |x| x.split('/').last }
 
-QUIET_FLAG = ENV['GITHUB_ACTIONS']
+QUIET_FLAG = ENV['GITHUB_REF']
 
 build do
   CONFIGS.map do |c|
