@@ -1,9 +1,9 @@
 kernel
 =======
 
-[![Build Status](https://img.shields.io/travis/com/dock0/kernel.svg)](https://travis-ci.com/dock0/kernel)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dock0/kernel/Build)](https://github.com/dock0/kernel/actions))
 [![GitHub release](https://img.shields.io/github/release/dock0/kernel.svg)](https://github.com/dock0/kernel/releases)
-[![MIT Licensed](http://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
+[![License](https://img.shields.io/github/license/dock0/kernel)](https://github.com/dock0/kernel/blob/master/LICENSE)
 
 Kernel builder and configs for my servers. Building uses [roller](https://github.com/akerl/roller) inside a [Docker](https://docker.com) container.
 
