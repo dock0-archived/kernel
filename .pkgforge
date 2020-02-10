@@ -18,8 +18,8 @@ build do
     kernel_version = `./dev/version.py configs/#{c}`.chomp
     cmd = "./dev/build.py -b #{tmpdir(:kernel)} -r #{REVISION} #{'-q' if QUIET_FLAG} configs/#{c}"
     puts cmd
-    run cmd
     p ENV
+    run cmd
     vmlinuz = File.join(tmpdir(:kernel), "sources/linux-#{kernel_version}/arch/x86/boot/bzImage")
     run "cp #{vmlinuz} #{releasedir}/vmlinuz_#{c}"
     cp "configs/#{c}", "config_#{c}"
