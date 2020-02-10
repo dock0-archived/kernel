@@ -6,8 +6,8 @@ source(
   path: '.'
 )
 
-tag = ENV['CIRCLE_TAG']
-REVISION = tag ? tag.split('-').last : 'dev'
+tag = ENV['GITHUB_REF']
+REVISION = (tag && tag.start_with?('refs/tags/')) ? tag.split('-').last : 'dev'
 
 CONFIGS = Dir.glob('configs/*').map { |x| x.split('/').last }
 
