@@ -26,16 +26,21 @@ def get_args(raw_args):
         default='dev',
         help='Set revision for new kernel'
     )
+    parser.add_argument(
+        '-q', '--quiet',
+        action='store_true',
+        help='Decrease verbosity of output'
+    )
     return parser.parse_args(raw_args)
 
 def easy_build(raw_args):
     args = get_args(raw_args)
 
     config_file = os.path.abspath(args.config_file)
-    
+
     kernel = roller.Kernel(
         build_dir=args.build_dir,
-        verbose=True
+        verbose=(args.quiet == False)
     )
 
     kernel.version = version.get_version(config_file)
